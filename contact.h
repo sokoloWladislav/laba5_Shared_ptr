@@ -6,26 +6,17 @@ typedef bool property;
 
 class Contact
 {
-public:
-    virtual void show();
-};
-
-class ContactOnline:public Contact
-{
     char *name;
     userStatus status;
-public:
-    ContactOnline();
-    void show();
-};
-
-class ContactBanned:public Contact
-{
-    char *name;
     property ban;
+    Contact(const Contact& other);
+    Contact& operator = (const Contact& other);
 public:
-    ContactBanned();
+    Contact();
+    ~Contact();
     void show();
+    bool isOnline();
+    bool isBanned();
 };
 
 #endif // CONTACT_H

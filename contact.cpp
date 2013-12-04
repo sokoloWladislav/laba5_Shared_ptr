@@ -3,47 +3,43 @@
 
 using namespace std;
 
-/*Contact::Contact()
+Contact::Contact()
 {
     name=new char[20];
     cout << "Enter the user name: " << endl;
     cin >> name;
-}*/
-
-/*Contact::~Contact()
-{
-    delete name;
-    name=0;
-}*/
-
-ContactOnline::ContactOnline()
-{
-    name=new char[20];
-    cout << "Enter the user name: " << endl;
-    cin >> name;
-    status=online;
-}
-
-ContactBanned::ContactBanned()
-{
-    name=new char[20];
-    cout << "Enter the user name: " << endl;
-    cin >> name;
+    status=offline;
     ban=false;
 }
 
-void ContactOnline::show()
+Contact::~Contact()
 {
-    cout.width(20);
-    cout << name << ' ' << status << endl;
+    delete name;
+    name=0;
 }
 
-void ContactBanned::show()
+void Contact::show()
 {
     cout.width(20);
     cout << name << ' ';
-    if(ban)
-        cout << "banned" << endl;
+    if(status==offline)
+        cout << "offline" << endl;
     else
-        cout << "unbanned" << endl;
+        cout << "online" << endl;
+}
+
+bool Contact::isOnline()
+{
+    if(status==online)
+        return true;
+    else
+        return false;
+}
+
+bool Contact::isBanned()
+{
+    if(ban)
+        return true;
+    else
+        return false;
 }
